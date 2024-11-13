@@ -1,0 +1,86 @@
+/* Basic Styling for Photo Container */
+.photo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Styling for individual photos */
+.photo {
+    position: absolute;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0; /* Initially hide photos */
+    transition: opacity 1s ease;
+}
+
+/* Active photo will be visible */
+.photo.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Make sure the image covers the full area */
+    border-radius: 0; /* No rounded borders */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Zoom In Animation */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Zoom Out Animation */
+@keyframes zoomOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Media Query for Mobile Screens */
+@media (max-width: 768px) {
+    /* Adjust container height to fit smaller screens */
+    .photo-container {
+        height: 80vh;
+    }
+
+    /* Adjust individual photo size for mobile screens */
+    .photo {
+        width: 90vw;
+        height: 70vh;
+    }
+
+    /* Adjust image styling for better fit on small screens */
+    .photo img {
+        object-fit: contain;
+    }
+}
